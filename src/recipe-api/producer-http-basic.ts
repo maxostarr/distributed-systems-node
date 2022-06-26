@@ -2,7 +2,7 @@ import fastify from "fastify";
 
 const server = fastify();
 const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || 4000;
+const PORT = Number(process.env.PORT) || 4000;
 
 console.log(`worker pid=${process.pid}`);
 
@@ -38,10 +38,16 @@ server.get("/recipes/:id", async (req, reply) => {
   };
 });
 
-server.listen(PORT, HOST, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Producer running at http://${HOST}:${PORT}`);
-});
+server.listen(
+  {
+    host: HOST,
+    port: PORT,
+  },
+  (err, address) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    console.log(`Producer running at http://${HOST}:${PORT}`);
+  },
+);
