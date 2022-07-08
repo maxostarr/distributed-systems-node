@@ -5,16 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:recipe": "ts-node ./src/recipe-api/producer-http-basic.ts"
+    "start:producer": "ts-node ./src/recipe-api/producer-http-basic.ts",
+    "start:consumer": "ts-node ./src/web-api/consumer-http-basic.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "ts-node": "^10.8.2",
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "fastify": "^4.1.0"
+    "@types/node-fetch": "^2.6.2",
+    "fastify": "^4.1.0",
+    "node-fetch": "2.6.1"
   }
 }
